@@ -11,7 +11,8 @@
    View,
    Platform,
    TouchableOpacity,
-   Navigator
+   Navigator,
+   Image
  } from 'react-native';
 
 import Splash from './Splash';
@@ -22,59 +23,57 @@ const defaultRoute = {
 
 class navigation extends Component {
   _renderScene(route, navigator) {
-    let Component = route.component;
+    let DComponent = route.component;
     return (
-      <Component {...route.params} navigator={navigator} />
+      <DComponent {...route.params} navigator={navigator} />
     );
   }
   _renderNavBar() {
     const styles = {
       title: {
-        flex: 1, alignItems: 'center', justifyContent: 'center'
+        flex: 1, flexDirection: 'row',
+        alignItems: 'center', 
+        justifyContent: 'space-between'
+
       },
       button: {
         flex: 1, width: 50, alignItems: 'center', justifyContent: 'center'
       },
       buttonText: {
-        fontSize: 18, color: '#FFFFFF', fontWeight: '400'
+        fontSize: 18, color: '#888', fontWeight: '400'
+      },
+      img: {
+        width: 30, height: 30
       }
     }
 
     var routeMapper = {
       LeftButton(route, navigator, index, navState) {
-        if(index > 0) {
-          return (
-            <TouchableOpacity
-              onPress={() => navigator.pop()}
-              style={styles.button}>
-              <Text style={styles.buttonText}>Back</Text>
-            </TouchableOpacity>
-          );
-        }
-        else {
-          return (
-            <TouchableOpacity
-              onPress={() => navigator.pop()}
-              style={styles.button}>
-              <Text style={styles.buttonText}>Logo</Text>
-            </TouchableOpacity>
-          );
-        }
+        return (
+          <TouchableOpacity
+            onPress={() => navigator.pop()}
+            style={styles.button}>
+            <Image
+              source={ index > 0 ?  require('./res/_nav_icon_back.png') : require('./res/_nav_icon_user.png')}
+              style={styles.img}
+            />
+          </TouchableOpacity>
+        );
       },
-      RightButton(route, navigator, index, navState) {
-        if(index > 0 && route.rightButton) {
-          return (
-            <TouchableOpacity
-              onPress={() => navigator.pop()}
-              style={styles.button}>
-              <Text style={styles.buttonText}></Text>
-            </TouchableOpacity>
-          );
-        } else {
-          return null
-        }
 
+      RightButton(route, navigator, index, navState) {
+        return (
+          <TouchableOpacity
+            // onPress={() => navigator.pop()}
+            style={styles.button}>
+            <Image
+              source={require('./res/nav_icon_call.png')}
+              style={styles.img}
+            />
+          </TouchableOpacity>
+        );
       },
+
       Title(route, navigator, index, navState) {
         return (
           <View style={styles.title}>
@@ -88,12 +87,12 @@ class navigation extends Component {
       <Navigator.NavigationBar
         style={{
           alignItems: 'center',
-          backgroundColor: '#55ACEE',
+          backgroundColor: '#fff',
           shadowOffset:{
               width: 1,
               height: 0.5,
           },
-          shadowColor: '#55ACEE',
+          shadowColor: '#fff',
           shadowOpacity: 0.8,
           }}
         routeMapper={routeMapper}
@@ -105,7 +104,7 @@ class navigation extends Component {
       <Navigator
         initialRoute={defaultRoute}
         renderScene={this._renderScene}
-        sceneStyle={{paddingTop: (Platform.OS === 'android' ? 66 : 74)}}
+        sceneStyle={{paddingTop: (Platform.OS === 'android' ? 60 : 74)}}
         navigationBar={this._renderNavBar()} />
     );
   }
