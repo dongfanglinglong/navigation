@@ -69,9 +69,7 @@ class Login extends React.Component {
               flex: 1,textAlign: 'center', textAlignVertical :'center',borderRadius: 5,overflow:'hidden',
               color: '#55ACEE' ,backgroundColor : '#FFCC00',width: 250 , height : 30, marginTop:20}
             }
-          >
-          Update my age
-          </Text>
+          > Login </Text>
         </TouchableOpacity>
       </View>
     );
