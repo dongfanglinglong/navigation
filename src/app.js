@@ -31,10 +31,7 @@ class navigation extends Component {
   _renderNavBar() {
     const styles = {
       title: {
-        flex: 1, flexDirection: 'row',
-        alignItems: 'center', 
-        justifyContent: 'space-between'
-
+        flex: 1, flexDirection: 'row',textAlign: 'center', alignItems: 'center'
       },
       button: {
         flex: 1, width: 50, alignItems: 'center', justifyContent: 'center'

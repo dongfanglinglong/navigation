@@ -46,6 +46,7 @@ class Login extends React.Component {
 
         <TextInput 
           maxLength={11}
+          keyboardType={'numeric'}
           value={this.state.userName}
           onChangeText={userName => this.setState({ userName })}
           placeholder={'Enter your name'}
@@ -58,11 +59,19 @@ class Login extends React.Component {
           placeholder={'Enter your password'}
           style={{ height: 40, width: 250 ,multiline :false}} 
           multiline = {false}
+          secureTextEntry = {true}
         />
 
-        <Text>My age: {this.state.age ? this.state.age : 'Unknown'}</Text>
+        <Text>Name: [{this.state.userName}],Pwd: [{this.state.pswd}]</Text>
+       
         <TouchableOpacity onPress={this._openPage.bind(this)}>
-          <Text style={{ color: '#55ACEE' }}>Update my age</Text>
+          <Text style={{ 
+              flex: 1,textAlign: 'center', textAlignVertical :'center',borderRadius: 5,overflow:'hidden',
+              color: '#55ACEE' ,backgroundColor : '#FFCC00',width: 250 , height : 30, marginTop:20}
+            }
+          >
+          Update my age
+          </Text>
         </TouchableOpacity>
       </View>
     );
