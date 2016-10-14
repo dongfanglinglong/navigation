@@ -10,6 +10,10 @@ import {
 } from 'react-native';
 
 import Welcome from './Welcome';
+import TopBar from './TopBar';
+
+
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -71,6 +75,7 @@ class Login extends React.Component {
             }
           > Login </Text>
         </TouchableOpacity>
+        <TopBar/>
       </View>
     );
   }

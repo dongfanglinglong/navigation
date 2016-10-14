@@ -80,21 +80,21 @@ class navigation extends Component {
       }
     };
 
-    return (
-      <Navigator.NavigationBar
-        style={{
-          alignItems: 'center',
-          backgroundColor: '#fff',
-          shadowOffset:{
-              width: 1,
-              height: 0.5,
-          },
-          shadowColor: '#fff',
-          shadowOpacity: 0.8,
-          }}
-        routeMapper={routeMapper}
-      />
-    );
+    // return (
+    //   <Navigator.NavigationBar
+    //     style={{
+    //       alignItems: 'center',
+    //       backgroundColor: '#fff',
+    //       shadowOffset:{
+    //           width: 1,
+    //           height: 0.5,
+    //       },
+    //       shadowColor: '#fff',
+    //       shadowOpacity: 0.8,
+    //       }}
+    //     // routeMapper={routeMapper}
+    //   />
+    // );
   }
   render() {
     return (
