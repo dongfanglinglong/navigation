@@ -15,20 +15,20 @@ class TopBar extends React.Component {
     super(props);
     this.state = {
       index: 0,
-      title: ''
+      title: this.state.title
     };
   }
 
 
   _back() {
-    this.props.navigator.pop();
+    // this.props.navigator.pop();
   }
 
   render() {
     return(
       <View style={styles.view}>
         <TouchableOpacity
-            onPress={() => _back()}
+            onPress={this._back()}
             style={styles.btnLeft}>
             <Image
               source={ this.state.index > 0 ?  require('./res/_nav_icon_back.png') : require('./res/_nav_icon_user.png')}
@@ -36,10 +36,12 @@ class TopBar extends React.Component {
             />
         </TouchableOpacity>
 
-        <Text style={styles.title}>{route.title}</Text>
+        <View style={styles.titleView}>
+          <Text style={{backgroundColor: 'skyblue', fontSize: 20, }}>{this.state.title} "kkkkk"</Text>
+        </View>
 
         <TouchableOpacity
-            onPress={() => _back()}
+            onPress={this._back()}
             style={styles.btnRight}>
             <Image
               source={require('./res/nav_icon_call.png')}
@@ -49,26 +51,27 @@ class TopBar extends React.Component {
 
       </View>
       );
-
   }
 
 }
 
 const styles = StyleSheet.create({
   view:{
-    flex: 1, flexDirection: 'row',height: 60
+    flexDirection: 'row', height: 60, alignItems:'center',  backgroundColor: '#cccccc',justifyContent:'space-between'
   },
-  title: {
-    flex: 1,    alignItems: 'center',    justifyContent: 'center'
+  titleView: {
+    flex:4, alignItems: 'center',
   },
   btnLeft: {
-     flex: 1, width: 30, height: 30, alignItems: 'center', justifyContent: 'center'
+    flex:1,
+    alignItems: 'center', justifyContent: 'flex-start', backgroundColor: 'powderblue'
   },
   btnRight: {
-    flex: 1, width: 30, height: 30, alignItems: 'center', justifyContent: 'center'
+            flex:1,
+    alignItems: 'center', justifyContent: 'center', backgroundColor: 'powderblue'
   },
   img: {
-    width: 30, height: 30
+    width: 35, height: 35
   }
 });
 

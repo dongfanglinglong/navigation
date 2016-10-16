@@ -42,6 +42,9 @@ class Login extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#FFFFFF' }}>
+        <TopBar state={{title:'ddjdjdjdjjdjdjdj'}}/>
+
+
         <Image 
           style={{width:200,height:162,marginTop: 40,marginBottom: 10}}
           source={require('./res/icon_didi_logo.png')}
@@ -75,7 +78,6 @@ class Login extends React.Component {
             }
           > Login </Text>
         </TouchableOpacity>
-        <TopBar/>
       </View>
     );
   }
