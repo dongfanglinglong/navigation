@@ -1,5 +1,3 @@
-
-
 import React, { Component } from 'react';
 import {
   View,
@@ -11,7 +9,8 @@ import {
 
 import Login from './Login';
 
-var {totalWidth ， totalheight} = Dimensions.get('window');// 屏幕宽度
+var {width, height} = Dimensions.get('window');// 屏幕宽度
+console.log('w[' + width + '],h[' + height + ']');
 
 export default  class Splash extends React.Component {
   constructor(props) {
@@ -30,7 +29,7 @@ export default  class Splash extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#FFFFFF' }}>
         <Image
-          style={{width: totalWidth, height: totalheight}}
+          style={{width: width, height: height}}
           source={require('./res/splash_logo.png')}>
 
           <TouchableOpacity onPress={this._openPage.bind(this)}>

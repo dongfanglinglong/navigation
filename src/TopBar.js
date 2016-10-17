@@ -10,20 +10,15 @@ import  {
 const {PropTypes} = React;
 
 
+
 export default class TopBar extends React.Component {
 
   static propTypes = {
       naviIndex : PropTypes.number.isRequired,
       naviTitle : PropTypes.string.isRequired,
-      naviBar: PropTypes.node.isRequired,
+      naviBar: PropTypes.object.isRequired,
   }
 
-  static get defaultProps() {
-    return {
-        naviTitle: "Default Title",
-        naviIndex: 0
-    }
-  }
   // constructor(props) {
   //   super(props);
   //   this.state = {
@@ -35,17 +30,14 @@ export default class TopBar extends React.Component {
 
   _back() {
     this.props.naviBar.pop();
-    console.log('www',null ==  this.props.naviBar ? "this.props.naviBar=null" : 'this.props.naviBar!=null');
-    this.props.navigator.pop();
-    console.log('www',null ==  this.props.navigator ? "this.props.navigator=null" : 'thisnavigator!=null');
-
+    console.log(null ==  this.props.naviBar ? "this.props.naviBar=null" : 'this.props.naviBar!=null');
   }
 
   render() {
     return(
       <View style={styles.view}>
         <TouchableOpacity
-            onPress={this._back()}
+            onPress={()=>this._back()}
             style={styles.btnLeft}>
             <Image
               source={ this.props.naviIndex > 0 ?  require('./res/_nav_icon_back.png') : require('./res/_nav_icon_user.png')}
@@ -53,10 +45,12 @@ export default class TopBar extends React.Component {
             />
         </TouchableOpacity>
 
-        <Text style={styles.title}>{this.props.naviTitle} [{this.props.naviIndex}] {this.props.naviBar.componentWillMount()}</Text>
+        <View style={styles.titleView}>
+          <Text style={{backgroundColor: 'skyblue', fontSize: 20, }}>{this.props.naviTitle} </Text>
+        </View>
 
         <TouchableOpacity
-            onPress={this._back()}
+            onPress={()=>this._back()}
             style={styles.btnRight}>
             <Image
               source={require('./res/nav_icon_call.png')}
@@ -71,18 +65,20 @@ export default class TopBar extends React.Component {
 
 const styles = StyleSheet.create({
   view:{
-    flex: 1, flexDirection: 'row',height: 60
+    flexDirection: 'row', height: 60, alignItems:'center',  backgroundColor: '#cccccc',justifyContent:'space-between'
   },
-  title: {
-    flex: 1,    alignItems: 'center',    justifyContent: 'center'
+  titleView: {
+    flex:4, alignItems: 'center',
   },
   btnLeft: {
-     flex: 1, width: 30, height: 30, alignItems: 'center', justifyContent: 'center'
+    flex:1,
+    alignItems: 'center', justifyContent: 'flex-start', backgroundColor: 'powderblue'
   },
   btnRight: {
-    flex: 1, width: 30, height: 30, alignItems: 'center', justifyContent: 'center'
+            flex:1,
+    alignItems: 'center', justifyContent: 'center', backgroundColor: 'powderblue'
   },
   img: {
-    width: 30, height: 30
+    width: 35, height: 35
   }
 });

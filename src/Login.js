@@ -42,7 +42,10 @@ class Login extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#FFFFFF' }}>
-        <Image
+
+        <TopBar naviIndex= {1} naviTitle='LOGIN' naviBar={this.props.navigator}/>
+
+        <Image 
           style={{width:200,height:162,marginTop: 40,marginBottom: 10}}
           source={require('./res/icon_didi_logo.png')}
         />
@@ -61,7 +64,7 @@ class Login extends React.Component {
           value={this.state.pswd}
           onChangeText={pswd => this.setState({ pswd })}
           placeholder={'Enter your password'}
-          style={{ height: 40, width: 250 ,multiline :false}}
+          style={{ height: 40, width: 250 }}
           secureTextEntry = {true}
         />
 
@@ -74,7 +77,6 @@ class Login extends React.Component {
             }
           > Login </Text>
         </TouchableOpacity>
-        <TopBar naviIndex= {1} naviTitle='LOGIN' naviBar={this.props.navigator} {...route.params} />
       </View>
     );
   }

@@ -1,1 +1,1 @@
-require('./src/LifeOfComponent');
+require('./src/app');
