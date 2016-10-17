@@ -42,13 +42,13 @@ class Login extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#FFFFFF' }}>
-        <Image 
+        <Image
           style={{width:200,height:162,marginTop: 40,marginBottom: 10}}
           source={require('./res/icon_didi_logo.png')}
         />
         <Text>Didi Login</Text>
 
-        <TextInput 
+        <TextInput
           maxLength={11}
           keyboardType={'numeric'}
           value={this.state.userName}
@@ -57,25 +57,24 @@ class Login extends React.Component {
           style={{ height: 40, width: 250 }}
         />
 
-        <TextInput 
+        <TextInput
           value={this.state.pswd}
           onChangeText={pswd => this.setState({ pswd })}
           placeholder={'Enter your password'}
-          style={{ height: 40, width: 250 ,multiline :false}} 
-          multiline = {false}
+          style={{ height: 40, width: 250 ,multiline :false}}
           secureTextEntry = {true}
         />
 
         <Text>Name: [{this.state.userName}],Pwd: [{this.state.pswd}]</Text>
-       
+
         <TouchableOpacity onPress={this._openPage.bind(this)}>
-          <Text style={{ 
+          <Text style={{
               flex: 1,textAlign: 'center', textAlignVertical :'center',borderRadius: 5,overflow:'hidden',
               color: '#55ACEE' ,backgroundColor : '#FFCC00',width: 250 , height : 30, marginTop:20}
             }
           > Login </Text>
         </TouchableOpacity>
-        <TopBar/>
+        <TopBar naviIndex= {1} naviTitle='LOGIN' naviBar={this.props.navigator} {...route.params} />
       </View>
     );
   }

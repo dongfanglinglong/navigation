@@ -4,16 +4,16 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  Image,
+  Dimensions
 } from 'react-native';
 
-
-
-
-
-
 import Login from './Login';
-class Splash extends React.Component {
+
+var {totalWidth ， totalheight} = Dimensions.get('window');// 屏幕宽度
+
+export default  class Splash extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -29,14 +29,17 @@ class Splash extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#FFFFFF' }}>
-        <Text>Splash Page</Text>
+        <Image
+          style={{width: totalWidth, height: totalheight}}
+          source={require('./res/splash_logo.png')}>
 
-        <TouchableOpacity onPress={this._openPage.bind(this)}>
-          <Text style={{ color: '#55ACEE' }}>Open New Page</Text>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={this._openPage.bind(this)}>
+            <Text style={{ color: '#55ACEE' }}>Open New Page</Text>
+          </TouchableOpacity>
+
+        </Image>
       </View>
     );
   }
 }
 
-export default Splash;

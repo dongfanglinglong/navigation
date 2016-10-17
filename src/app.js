@@ -101,7 +101,7 @@ class navigation extends Component {
       <Navigator
         initialRoute={defaultRoute}
         renderScene={this._renderScene}
-        sceneStyle={{paddingTop: (Platform.OS === 'android' ? 60 : 74)}}
+        // sceneStyle={{paddingTop: (Platform.OS === 'android' ? 60 : 74)}}
         navigationBar={this._renderNavBar()} />
     );
   }

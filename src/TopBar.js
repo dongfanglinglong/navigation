@@ -1,45 +1,62 @@
 // TopBar
-// 
-import React, { Component } from 'react';
+import React, { Component,Console } from 'react';
 import  {
   StyleSheet,
   View,
   Text,
   TouchableOpacity,
-  Image
+  Image,
 } from 'react-native';
+const {PropTypes} = React;
 
-class TopBar extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      index: 0,
-      title: ''
-    };
+export default class TopBar extends React.Component {
+
+  static propTypes = {
+      naviIndex : PropTypes.number.isRequired,
+      naviTitle : PropTypes.string.isRequired,
+      naviBar: PropTypes.node.isRequired,
   }
+
+  static get defaultProps() {
+    return {
+        naviTitle: "Default Title",
+        naviIndex: 0
+    }
+  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     naviIndex: this.props.naviIndex,
+  //     naviTitle: this.props.naviTitle
+  //   };
+  // }
 
 
   _back() {
+    this.props.naviBar.pop();
+    console.log('www',null ==  this.props.naviBar ? "this.props.naviBar=null" : 'this.props.naviBar!=null');
     this.props.navigator.pop();
+    console.log('www',null ==  this.props.navigator ? "this.props.navigator=null" : 'thisnavigator!=null');
+
   }
 
   render() {
     return(
       <View style={styles.view}>
         <TouchableOpacity
-            onPress={() => _back()}
+            onPress={this._back()}
             style={styles.btnLeft}>
             <Image
-              source={ this.state.index > 0 ?  require('./res/_nav_icon_back.png') : require('./res/_nav_icon_user.png')}
+              source={ this.props.naviIndex > 0 ?  require('./res/_nav_icon_back.png') : require('./res/_nav_icon_user.png')}
               style={styles.img}
             />
         </TouchableOpacity>
 
-        <Text style={styles.title}>{route.title}</Text>
+        <Text style={styles.title}>{this.props.naviTitle} [{this.props.naviIndex}] {this.props.naviBar.componentWillMount()}</Text>
 
         <TouchableOpacity
-            onPress={() => _back()}
+            onPress={this._back()}
             style={styles.btnRight}>
             <Image
               source={require('./res/nav_icon_call.png')}
@@ -49,9 +66,7 @@ class TopBar extends React.Component {
 
       </View>
       );
-
   }
-
 }
 
 const styles = StyleSheet.create({
@@ -71,5 +86,3 @@ const styles = StyleSheet.create({
     width: 30, height: 30
   }
 });
-
-export default TopBar;
